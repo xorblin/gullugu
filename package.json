@@ -16,7 +16,8 @@
     "express": "^4.18.2",
     "express-ejs-layouts": "^2.5.1",
     "mongoose": "^8.0.0",
-    "socket.io": "^4.7.2"
+    "socket.io": "^4.7.2",
+    "socket.io-stream": "^0.9.1"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"

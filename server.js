@@ -14,6 +14,9 @@ server.use(express.json());
 server.use(expressLayouts);
 server.set("view engine", "ejs");
 server.set("views", path.join(__dirname, "src", "views"));
+server.use(express.static(path.join(__dirname, "src", "assets", "styles")));
+server.use(express.static(path.join(__dirname, "src", "assets", "images")));
+server.use(express.static(path.join(__dirname, "src", "assets", "scripts")));
 
 server.get("/", (req, res, next) => {
   res.render("index");
