@@ -2,6 +2,7 @@
     width: 100%;
     height: 100vh;
     overflow: hidden;
+    background-color: #424242;
 }
 
 .container-item {
@@ -16,41 +17,83 @@
 
 .userVideoContainer {
     bottom: 0;
-    z-index: 1;
     right: 0;
-    position: absolute;
+    width: 300px;
+    height: 200px;
+    position: absolute;    
 }
 
 .userVideo {
-    width: 300px;
-    height: 150px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
     object-fit: cover;
+    background-color: #fff;
+}
+.video-overlap{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 999 !important;
+    background-color: transparent;
 }
 
 .streamCanvas {
-    width: 100%;
-    height: 100vh;
+    width: 90%;
+    height: 80vh;
+    border-radius: 20px;
     background-color: black;
 }
-.chat-container{
+
+.chat-container {
     width: 100%;
+    background-color: #fff;
 }
-.chat-header-container{
+
+.chat-header-container {
     width: 100%;
     height: 60px;
     padding: 0 20px;
     align-items: center;
     background-color: greenyellow;
 }
-.chat-message-container{
+
+.chat-message-container {
     width: 100%;
     height: calc(100% - 100px);
+    background-color: #fff;
+    overflow-y: scroll;
+
 }
+
 .message-input-container {
     width: 100%;
     border: 1px solid gray;
 }
-
+.receive-message,
+.sent-message{
+    width: 100%;
+    display: flex;
+    height: fit-content;
+}
+.message{
+    width: 80%;
+    padding: 5px 10px;
+}
+.receive-message{
+    text-align: left;
+    border-radius: 10px;
+    justify-content: flex-start;
+}
+.sent-message{
+    right: 0;
+    margin-right: auto;
+    text-align: right;
+    border-radius: 10px;
+    justify-content: flex-end;
+}
 .message-input {
     flex: 1;
     height: 40px;
@@ -60,8 +103,16 @@
     font-size: 16px;
 }
 
-.send-btn{
+.send-btn {
     width: 120px;
     height: 40px;
     border: none;
+}
+
+#img{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }

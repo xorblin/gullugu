@@ -5,6 +5,7 @@ const path = require("node:path");
 const express = require("express");
 const socket = require("socket.io");
 const database = require("./src/utils/database");
+const client = require("./src/utils/redisDatabase");
 const expressLayouts = require("express-ejs-layouts");
 
 const server = express();
@@ -29,6 +30,6 @@ let socketServer = server.listen(PORT, () => {
 const io = socket(socketServer, {
   cors: "http://127.0.0.1:5173",
 });
-
+client.connect();
 const connectionInitiate = require("./src/socket/socketInit");
-connectionInitiate(io);
+connectionInitiate(io, client);

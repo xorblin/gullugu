@@ -1,9 +1,11 @@
 <link rel="stylesheet" href="/index.css">
 <div class="container row">
-    <div class=" media-container row">
-        <canvas id="canvas" class="streamCanvas"></canvas>
+    <div class="media-container row" id="media-container">
+
         <div class="userVideoContainer ">
-            <video id="video" class="userVideo" src=""></video>
+            <video id="videoElement" class="userVideo" src="" autoplay></video>
+            <div class="video-overlap">
+            </div>
         </div>
     </div>
     <div class="container-item col cent">
@@ -12,32 +14,39 @@
                 <h3>Anonymous</h3>
             </div>
         </div>
-        <div class="chat-message-container"></div>
+        <div class="chat-message-container" id="messageContainer">
+            
+        </div>
         <div class="message-input-container row">
-            <input type="text" class="message-input" placeholder="Enter your message..." required />
-            <button class="send-btn">Send</button>
+            <input type="text" id="messageInput" class="message-input" placeholder="Enter your message..." required />
+            <button class="send-btn" id="messageBtn">Send</button>
         </div>
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"
     integrity="sha512-zoJXRvW2gC8Z0Xo3lBbao5+AS3g6YWr5ztKqaicua11xHo+AvE1b0lT9ODgrHTmNUxeCw0Ry4BGRYZfXu70weg=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>
-    const socket = io();
-    socket.on('connect', () => {
-        console.log('connected');
-    });
-</script>
+<script src="https://cdn.jsdelivr.net/npm/peerjs@1.3.1/dist/peerjs.min.js"></script>
+
 
 <script>
-    let canvas = document.getElementById('canvas');
-    let context = canvas.getContext('2d');
-    let video = document.getElementById('video');
-    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices.getUserMedia({ video: true }).then(function (stream) {
-            video.srcObject = stream;
-            video.play();
+    let socket;
+    // if (localStorage.getItem('isWebsiteOpen') === 'true') {
+    //     alert('This website is already open in another tab.');
+    //     window.close(); // Close the current tab
+    // } else {
+        // localStorage.setItem('isWebsiteOpen', 'true');
+        socket = io();
+        socket.on('connect', () => {
+            console.log('connected');
         });
-    }
+        // window.addEventListener('beforeunload', function () {
+            // localStorage.removeItem('isWebsiteOpen');
+        // });
+    // }
+
 
 </script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="/index.js"></script>
